@@ -172,7 +172,7 @@ public class MenuLibros extends javax.swing.JFrame {
 
         jLabel1.setBackground(new java.awt.Color(243, 241, 229));
         jLabel1.setFont(new java.awt.Font("Arial", 1, 50)); // NOI18N
-        jLabel1.setText("Menu Principal");
+        jLabel1.setText("Menu Principal / Libros");
         jLabel1.setOpaque(true);
         jLabel1.setPreferredSize(new java.awt.Dimension(840, 50));
 
@@ -545,39 +545,25 @@ public class MenuLibros extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgregarLibro;
     private javax.swing.JButton btnAgregarLibros;
-    private javax.swing.JButton btnEliminarLibro;
     private javax.swing.JButton btnEliminarLibros;
     private javax.swing.JButton btnInsertar;
-    private javax.swing.JButton btnModificarLibro;
     private javax.swing.JButton btnModificarLibros;
     private javax.swing.JButton btnSeccionLibros;
     private javax.swing.JButton btnSeccionPrestamos;
     private javax.swing.JButton btnSeccionUsuarios;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel49;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableLibros;
     private javax.swing.JTextField jtfAno;
@@ -586,11 +572,5 @@ public class MenuLibros extends javax.swing.JFrame {
     private javax.swing.JTextField jtfIdLibro;
     private javax.swing.JTextField jtfInventario;
     private javax.swing.JTextField jtfTitulo;
-    private javax.swing.JTextField txtAno;
-    private javax.swing.JTextField txtAutor;
-    private javax.swing.JTextField txtEditorial;
-    private javax.swing.JTextField txtIdlibro;
-    private javax.swing.JTextField txtInventario;
-    private javax.swing.JTextField txtTitulo;
     // End of variables declaration//GEN-END:variables
 }

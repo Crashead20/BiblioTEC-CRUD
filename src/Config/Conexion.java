@@ -7,10 +7,11 @@ public class Conexion {//Creamos la clase conexion
         public Conexion(){//Creamos el metodo conexion
             try{
               Class.forName("com.mysql.cj.jdbc.Driver");//Importamos el driver de sql y java
-              con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bibliotec","root","");//Ingresamos los datos para ingresar a la base de datos
-                System.out.println("Si Jalo (Awebo)");
+              //Ingresamos los datos para ingresar a la base de datos
+              con=DriverManager.getConnection("jdbc:mysql://localhost:3306/bibliotec","root","");
+                System.out.println("Conecto Base de datos");
             }catch(Exception e){
-                System.out.println("No Jalo (Tilin Triste)");
+                System.out.println("Fallo al conectar base de datos");
             }
         }
         //Creamos el metodo coneccion para lograr la conexion

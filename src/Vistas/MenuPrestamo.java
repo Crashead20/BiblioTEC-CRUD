@@ -164,7 +164,7 @@ public class MenuPrestamo extends javax.swing.JFrame {
 
         jLabel1.setBackground(new java.awt.Color(243, 241, 229));
         jLabel1.setFont(new java.awt.Font("Arial", 1, 50)); // NOI18N
-        jLabel1.setText("Menu Principal");
+        jLabel1.setText("Menu Principal / Prestamos");
         jLabel1.setOpaque(true);
         jLabel1.setPreferredSize(new java.awt.Dimension(840, 50));
 
