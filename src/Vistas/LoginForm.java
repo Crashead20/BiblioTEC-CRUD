@@ -192,11 +192,13 @@ public class LoginForm extends javax.swing.JFrame {
         if (nivelUsuario != null) {
             if (nivelUsuario.equals("administrador")) {
                 // Si es administrador, abrir el formulario MenuLibros
+                JOptionPane.showMessageDialog(null, "Acceso correcto: ADMINISTRADOR", "Ingresando...", 1);
                 MenuLibros  menulibros = new MenuLibros();
                 menulibros.setVisible(true);
                 dispose();
                 //Si es empleado, abrir el formulario Menu Libros
             } else if (nivelUsuario.equals("empleado")) {
+                JOptionPane.showMessageDialog(null, "Acceso correcto: EMPLEADO", "Ingresando...", 1);
                 MenuLibros  menulibros = new MenuLibros();
                 menulibros.setVisible(true);
                 dispose();
