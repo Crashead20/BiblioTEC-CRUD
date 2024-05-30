@@ -5,7 +5,7 @@ import java.sql.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class MenuLibros extends javax.swing.JFrame {
+public class MenuPrestamos extends javax.swing.JFrame {
     
     Conexion con = new Conexion();
     Connection cn;
@@ -15,7 +15,7 @@ public class MenuLibros extends javax.swing.JFrame {
     int id;
     
     
-    public MenuLibros() {
+    public MenuPrestamos() {
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
         //LISTAMOS TABLAS AL INICIAR CON EL PROGRAMA
@@ -72,7 +72,7 @@ public class MenuLibros extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(129, 255, 131));
 
-        btnSeccionLibros.setBackground(new java.awt.Color(204, 153, 255));
+        btnSeccionLibros.setBackground(new java.awt.Color(18, 188, 85));
         btnSeccionLibros.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnSeccionLibros.setForeground(new java.awt.Color(243, 241, 229));
         btnSeccionLibros.setText("Libros");
@@ -94,7 +94,7 @@ public class MenuLibros extends javax.swing.JFrame {
             }
         });
 
-        btnSeccionPrestamos.setBackground(new java.awt.Color(18, 188, 85));
+        btnSeccionPrestamos.setBackground(new java.awt.Color(204, 153, 255));
         btnSeccionPrestamos.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnSeccionPrestamos.setForeground(new java.awt.Color(243, 241, 229));
         btnSeccionPrestamos.setText("Prestamos");
@@ -256,7 +256,7 @@ public class MenuLibros extends javax.swing.JFrame {
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(169, Short.MAX_VALUE)
                 .addComponent(jLabel45)
                 .addGap(155, 155, 155))
             .addGroup(jPanel3Layout.createSequentialGroup()
@@ -264,11 +264,10 @@ public class MenuLibros extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(btnAgregarLibros, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(btnModificarLibros, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44)
-                        .addComponent(btnEliminarLibros, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45))
+                        .addGap(34, 34, 34)
+                        .addComponent(btnEliminarLibros, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabel50, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -284,8 +283,8 @@ public class MenuLibros extends javax.swing.JFrame {
                             .addComponent(jtfAutor)
                             .addComponent(jtfEditorial)
                             .addComponent(jtfAno)
-                            .addComponent(jtfInventario))
-                        .addGap(73, 73, 73))))
+                            .addComponent(jtfInventario))))
+                .addGap(73, 73, 73))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -329,23 +328,22 @@ public class MenuLibros extends javax.swing.JFrame {
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(50, 50, 50)
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 790, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(697, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(29, 29, 29)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 790, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(27, 27, 27))))
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(22, 22, 22)
+                .addGap(42, 42, 42)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(38, 38, 38)
+                .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -367,7 +365,9 @@ public class MenuLibros extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSeccionLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeccionLibrosActionPerformed
-        // TODO add your handling code here:
+        MenuLibros menuLibros = new MenuLibros();
+        menuLibros.setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnSeccionLibrosActionPerformed
 
     private void btnSeccionUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeccionUsuariosActionPerformed
@@ -377,9 +377,7 @@ public class MenuLibros extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSeccionUsuariosActionPerformed
 
     private void btnSeccionPrestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeccionPrestamosActionPerformed
-        MenuPrestamos  menuPrestamos = new MenuPrestamos();
-        menuPrestamos.setVisible(true);
-        dispose();
+        // TODO add your handling code here:
     }//GEN-LAST:event_btnSeccionPrestamosActionPerformed
 
     private void btnAgregarLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarLibrosActionPerformed
@@ -424,7 +422,7 @@ public class MenuLibros extends javax.swing.JFrame {
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MenuLibros().setVisible(true);
+                new MenuPrestamos().setVisible(true);
             }
         });
     }
@@ -487,7 +485,7 @@ public class MenuLibros extends javax.swing.JFrame {
                 cn = con.getConnection();
                 st = cn.createStatement();
                 st.executeUpdate(sql);
-                JOptionPane.showMessageDialog(null, "Libro Modificado");
+                JOptionPane.showMessageDialog(null, "Usuario Modificado");
                 limpiarTabla(modelo1);
                 
             } else {
@@ -503,13 +501,13 @@ public class MenuLibros extends javax.swing.JFrame {
         String sql = "delete from libros where id_libro=" + id;        
         int fila = jTableLibros.getSelectedRow();
         if (fila < 0) {
-            JOptionPane.showMessageDialog(null,"Libro no Seleccionado");
+            JOptionPane.showMessageDialog(null,"Usuario no Seleccionado");
         } else {
                 try {
                     cn = con.getConnection();
                     st = cn.createStatement();
                     st.executeUpdate(sql);
-                    JOptionPane.showMessageDialog(null, "Libro Eliminado");
+                    JOptionPane.showMessageDialog(null, "Usuario Eliminado");
                     limpiarTabla(modelo1);
                     
                 } catch (Exception e) {
@@ -540,39 +538,25 @@ public class MenuLibros extends javax.swing.JFrame {
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgregarLibro;
     private javax.swing.JButton btnAgregarLibros;
-    private javax.swing.JButton btnEliminarLibro;
     private javax.swing.JButton btnEliminarLibros;
     private javax.swing.JButton btnInsertar;
-    private javax.swing.JButton btnModificarLibro;
     private javax.swing.JButton btnModificarLibros;
     private javax.swing.JButton btnSeccionLibros;
     private javax.swing.JButton btnSeccionPrestamos;
     private javax.swing.JButton btnSeccionUsuarios;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel49;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTableLibros;
     private javax.swing.JTextField jtfAno;
@@ -581,11 +565,5 @@ public class MenuLibros extends javax.swing.JFrame {
     private javax.swing.JTextField jtfIdLibro;
     private javax.swing.JTextField jtfInventario;
     private javax.swing.JTextField jtfTitulo;
-    private javax.swing.JTextField txtAno;
-    private javax.swing.JTextField txtAutor;
-    private javax.swing.JTextField txtEditorial;
-    private javax.swing.JTextField txtIdlibro;
-    private javax.swing.JTextField txtInventario;
-    private javax.swing.JTextField txtTitulo;
     // End of variables declaration//GEN-END:variables
 }

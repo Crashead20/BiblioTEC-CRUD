@@ -5,7 +5,7 @@ import java.sql.*;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-public class MenuLibros extends javax.swing.JFrame {
+public class MenuUsuarios extends javax.swing.JFrame {
     
     Conexion con = new Conexion();
     Connection cn;
@@ -15,19 +15,14 @@ public class MenuLibros extends javax.swing.JFrame {
     int id;
     
     
-    public MenuLibros() {
+    public MenuUsuarios() {
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
         //LISTAMOS TABLAS AL INICIAR CON EL PROGRAMA
-        listarLibros();
+        listarUsuarios();
  
     }
-    
-    
-    
-    
-    
-    
+      
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -40,25 +35,25 @@ public class MenuLibros extends javax.swing.JFrame {
         btnSeccionPrestamos = new javax.swing.JButton();
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTableLibros = new javax.swing.JTable();
+        jTableUsuarios = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jLabel45 = new javax.swing.JLabel();
         jLabel46 = new javax.swing.JLabel();
-        jtfIdLibro = new javax.swing.JTextField();
-        btnAgregarLibros = new javax.swing.JButton();
-        btnEliminarLibros = new javax.swing.JButton();
-        btnModificarLibros = new javax.swing.JButton();
+        jtfIdUsuario = new javax.swing.JTextField();
+        btnAgregarUsuario = new javax.swing.JButton();
+        btnEliminarUsuario = new javax.swing.JButton();
+        btnModificarUsuario = new javax.swing.JButton();
         jLabel47 = new javax.swing.JLabel();
-        jtfTitulo = new javax.swing.JTextField();
+        jtfNombre = new javax.swing.JTextField();
         jLabel48 = new javax.swing.JLabel();
-        jtfAutor = new javax.swing.JTextField();
+        jtfEdad = new javax.swing.JTextField();
         jLabel49 = new javax.swing.JLabel();
         jLabel50 = new javax.swing.JLabel();
         jLabel51 = new javax.swing.JLabel();
-        jtfInventario = new javax.swing.JTextField();
-        jtfAno = new javax.swing.JTextField();
-        jtfEditorial = new javax.swing.JTextField();
+        jtfPrestamoA = new javax.swing.JTextField();
+        jtfTelefono = new javax.swing.JTextField();
+        jtfDireccion = new javax.swing.JTextField();
 
         btnInsertar.setBackground(new java.awt.Color(18, 188, 85));
         btnInsertar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -72,7 +67,7 @@ public class MenuLibros extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(129, 255, 131));
 
-        btnSeccionLibros.setBackground(new java.awt.Color(204, 153, 255));
+        btnSeccionLibros.setBackground(new java.awt.Color(18, 188, 85));
         btnSeccionLibros.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnSeccionLibros.setForeground(new java.awt.Color(243, 241, 229));
         btnSeccionLibros.setText("Libros");
@@ -83,7 +78,7 @@ public class MenuLibros extends javax.swing.JFrame {
             }
         });
 
-        btnSeccionUsuarios.setBackground(new java.awt.Color(18, 188, 85));
+        btnSeccionUsuarios.setBackground(new java.awt.Color(204, 102, 255));
         btnSeccionUsuarios.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnSeccionUsuarios.setForeground(new java.awt.Color(243, 241, 229));
         btnSeccionUsuarios.setText("Usuarios");
@@ -105,26 +100,26 @@ public class MenuLibros extends javax.swing.JFrame {
             }
         });
 
-        jTableLibros.setBackground(new java.awt.Color(243, 241, 229));
-        jTableLibros.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(243, 241, 229), 2));
-        jTableLibros.setModel(new javax.swing.table.DefaultTableModel(
+        jTableUsuarios.setBackground(new java.awt.Color(243, 241, 229));
+        jTableUsuarios.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(243, 241, 229), 2));
+        jTableUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "IdLibro", "Titulo", "Autor", "Editorial", "Año", "Inventario"
+                "IdUsuario", "Nombre", "Edad", "Direccion", "Telefono", "Prestamo Activo"
             }
         ));
-        jTableLibros.addMouseListener(new java.awt.event.MouseAdapter() {
+        jTableUsuarios.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jTableLibrosMouseClicked(evt);
+                jTableUsuariosMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(jTableLibros);
-        if (jTableLibros.getColumnModel().getColumnCount() > 0) {
-            jTableLibros.getColumnModel().getColumn(0).setMinWidth(80);
-            jTableLibros.getColumnModel().getColumn(0).setPreferredWidth(80);
-            jTableLibros.getColumnModel().getColumn(0).setMaxWidth(50);
+        jScrollPane1.setViewportView(jTableUsuarios);
+        if (jTableUsuarios.getColumnModel().getColumnCount() > 0) {
+            jTableUsuarios.getColumnModel().getColumn(0).setMinWidth(80);
+            jTableUsuarios.getColumnModel().getColumn(0).setPreferredWidth(80);
+            jTableUsuarios.getColumnModel().getColumn(0).setMaxWidth(50);
         }
 
         jDesktopPane1.setLayer(jScrollPane1, javax.swing.JLayeredPane.DEFAULT_LAYER);
@@ -179,113 +174,114 @@ public class MenuLibros extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(129, 255, 131));
 
         jLabel45.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        jLabel45.setText("Edicion Libros:");
+        jLabel45.setText("Edicion Usuarios:");
 
         jLabel46.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel46.setText("Id Libro:");
+        jLabel46.setText("Id Usuario:");
 
-        jtfIdLibro.setEditable(false);
-        jtfIdLibro.setBackground(new java.awt.Color(243, 241, 229));
-        jtfIdLibro.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jtfIdUsuario.setEditable(false);
+        jtfIdUsuario.setBackground(new java.awt.Color(243, 241, 229));
+        jtfIdUsuario.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
-        btnAgregarLibros.setBackground(new java.awt.Color(18, 188, 85));
-        btnAgregarLibros.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnAgregarLibros.setForeground(new java.awt.Color(243, 241, 229));
-        btnAgregarLibros.setText("Agregar");
-        btnAgregarLibros.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(243, 241, 229), 2));
-        btnAgregarLibros.addActionListener(new java.awt.event.ActionListener() {
+        btnAgregarUsuario.setBackground(new java.awt.Color(18, 188, 85));
+        btnAgregarUsuario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnAgregarUsuario.setForeground(new java.awt.Color(243, 241, 229));
+        btnAgregarUsuario.setText("Agregar");
+        btnAgregarUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(243, 241, 229), 2));
+        btnAgregarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnAgregarLibrosActionPerformed(evt);
+                btnAgregarUsuarioActionPerformed(evt);
             }
         });
 
-        btnEliminarLibros.setBackground(new java.awt.Color(18, 188, 85));
-        btnEliminarLibros.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnEliminarLibros.setForeground(new java.awt.Color(243, 241, 229));
-        btnEliminarLibros.setText("Eliminar");
-        btnEliminarLibros.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(243, 241, 229), 2));
-        btnEliminarLibros.addActionListener(new java.awt.event.ActionListener() {
+        btnEliminarUsuario.setBackground(new java.awt.Color(18, 188, 85));
+        btnEliminarUsuario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnEliminarUsuario.setForeground(new java.awt.Color(243, 241, 229));
+        btnEliminarUsuario.setText("Eliminar");
+        btnEliminarUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(243, 241, 229), 2));
+        btnEliminarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEliminarLibrosActionPerformed(evt);
+                btnEliminarUsuarioActionPerformed(evt);
             }
         });
 
-        btnModificarLibros.setBackground(new java.awt.Color(18, 188, 85));
-        btnModificarLibros.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        btnModificarLibros.setForeground(new java.awt.Color(243, 241, 229));
-        btnModificarLibros.setText("Modificar");
-        btnModificarLibros.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(243, 241, 229), 2));
-        btnModificarLibros.addActionListener(new java.awt.event.ActionListener() {
+        btnModificarUsuario.setBackground(new java.awt.Color(18, 188, 85));
+        btnModificarUsuario.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        btnModificarUsuario.setForeground(new java.awt.Color(243, 241, 229));
+        btnModificarUsuario.setText("Modificar");
+        btnModificarUsuario.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(243, 241, 229), 2));
+        btnModificarUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnModificarLibrosActionPerformed(evt);
+                btnModificarUsuarioActionPerformed(evt);
             }
         });
 
         jLabel47.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel47.setText("Titulo");
+        jLabel47.setText("Nombre:");
 
-        jtfTitulo.setBackground(new java.awt.Color(243, 241, 229));
-        jtfTitulo.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jtfNombre.setBackground(new java.awt.Color(243, 241, 229));
+        jtfNombre.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
         jLabel48.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel48.setText("Autor");
+        jLabel48.setText("Edad:");
 
-        jtfAutor.setBackground(new java.awt.Color(243, 241, 229));
-        jtfAutor.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jtfEdad.setBackground(new java.awt.Color(243, 241, 229));
+        jtfEdad.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
         jLabel49.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel49.setText("Editorial");
+        jLabel49.setText("Direccion:");
 
         jLabel50.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel50.setText("Año");
+        jLabel50.setText("Telefono:");
 
         jLabel51.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel51.setText("Inventario");
+        jLabel51.setText("Prestamo Activo:");
 
-        jtfInventario.setBackground(new java.awt.Color(243, 241, 229));
-        jtfInventario.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jtfPrestamoA.setBackground(new java.awt.Color(243, 241, 229));
+        jtfPrestamoA.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
-        jtfAno.setBackground(new java.awt.Color(243, 241, 229));
-        jtfAno.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jtfTelefono.setBackground(new java.awt.Color(243, 241, 229));
+        jtfTelefono.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
-        jtfEditorial.setBackground(new java.awt.Color(243, 241, 229));
-        jtfEditorial.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jtfDireccion.setBackground(new java.awt.Color(243, 241, 229));
+        jtfDireccion.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel45)
-                .addGap(155, 155, 155))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(46, 46, 46)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(btnAgregarLibros, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                        .addComponent(btnModificarLibros, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(44, 44, 44)
-                        .addComponent(btnEliminarLibros, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(45, 45, 45))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel50, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel46, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel47, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel48, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel49, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel51, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE))
-                        .addGap(18, 18, Short.MAX_VALUE)
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jtfIdLibro, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
-                            .addComponent(jtfTitulo)
-                            .addComponent(jtfAutor)
-                            .addComponent(jtfEditorial)
-                            .addComponent(jtfAno)
-                            .addComponent(jtfInventario))
-                        .addGap(73, 73, 73))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel45)
+                        .addGap(82, 82, 82))
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
+                        .addGap(46, 46, 46)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(btnAgregarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnModificarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(52, 52, 52)
+                                .addComponent(btnEliminarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jLabel50, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel46, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel47, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel48, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel49, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel51, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(18, 18, Short.MAX_VALUE)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jtfIdUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
+                                    .addComponent(jtfNombre)
+                                    .addComponent(jtfEdad)
+                                    .addComponent(jtfDireccion)
+                                    .addComponent(jtfTelefono)
+                                    .addComponent(jtfPrestamoA))))))
+                .addGap(73, 73, 73))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -294,33 +290,33 @@ public class MenuLibros extends javax.swing.JFrame {
                 .addComponent(jLabel45)
                 .addGap(40, 40, 40)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtfIdLibro, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfIdUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel46))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel47)
-                    .addComponent(jtfTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel48)
-                    .addComponent(jtfAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfEdad, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jtfEditorial, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jtfDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel49))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel50)
-                    .addComponent(jtfAno, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel51)
-                    .addComponent(jtfInventario, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jtfPrestamoA, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btnAgregarLibros, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnModificarLibros, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnEliminarLibros, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnAgregarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnModificarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEliminarUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(95, 95, 95))
         );
 
@@ -337,7 +333,7 @@ public class MenuLibros extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
-                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 490, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(27, 27, 27))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -367,13 +363,13 @@ public class MenuLibros extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnSeccionLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeccionLibrosActionPerformed
-        // TODO add your handling code here:
+        MenuLibros menuLibros = new MenuLibros();
+        menuLibros.setVisible(true);
+        dispose();
     }//GEN-LAST:event_btnSeccionLibrosActionPerformed
 
     private void btnSeccionUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeccionUsuariosActionPerformed
-        MenuUsuarios  menuUsuarios = new MenuUsuarios();
-        menuUsuarios.setVisible(true);
-        dispose();
+        
     }//GEN-LAST:event_btnSeccionUsuariosActionPerformed
 
     private void btnSeccionPrestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeccionPrestamosActionPerformed
@@ -382,92 +378,91 @@ public class MenuLibros extends javax.swing.JFrame {
         dispose();
     }//GEN-LAST:event_btnSeccionPrestamosActionPerformed
 
-    private void btnAgregarLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarLibrosActionPerformed
+    private void btnAgregarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarUsuarioActionPerformed
         Agregar();
-        listarLibros();
+        listarUsuarios();
         nuevo();
-    }//GEN-LAST:event_btnAgregarLibrosActionPerformed
+    }//GEN-LAST:event_btnAgregarUsuarioActionPerformed
 
-    private void btnEliminarLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarLibrosActionPerformed
+    private void btnEliminarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarUsuarioActionPerformed
         Eliminar();
-        listarLibros();
+        listarUsuarios();
         nuevo();
-    }//GEN-LAST:event_btnEliminarLibrosActionPerformed
+    }//GEN-LAST:event_btnEliminarUsuarioActionPerformed
 
-    private void btnModificarLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarLibrosActionPerformed
+    private void btnModificarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarUsuarioActionPerformed
         Modificar();
-        listarLibros();
+        listarUsuarios();
         nuevo();
-    }//GEN-LAST:event_btnModificarLibrosActionPerformed
+    }//GEN-LAST:event_btnModificarUsuarioActionPerformed
 
-    private void jTableLibrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableLibrosMouseClicked
-        int row = jTableLibros.getSelectedRow();
+    private void jTableUsuariosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableUsuariosMouseClicked
+        int row = jTableUsuarios.getSelectedRow();
         if (row == -1) {
             JOptionPane.showMessageDialog(null, "No se Selecciono");
         } else {
-            id = Integer.parseInt((String) jTableLibros.getValueAt(row, 0).toString());
-            String titulo = (String) jTableLibros.getValueAt(row, 1);
-            String autor = (String) jTableLibros.getValueAt(row, 2);
-            String editorial = (String) jTableLibros.getValueAt(row, 3);
-            String ano = (String) jTableLibros.getValueAt(row, 4);
-            String inventario = (String) jTableLibros.getValueAt(row, 5);
-            jtfIdLibro.setText("" + id);
-            jtfTitulo.setText(titulo);
-            jtfAutor.setText(autor);
-            jtfEditorial.setText(editorial);
-            jtfAno.setText(ano);
-            jtfInventario.setText(inventario);
-
+            id = Integer.parseInt((String) jTableUsuarios.getValueAt(row, 0).toString());
+            String nombre = (String) jTableUsuarios.getValueAt(row, 1);
+            String edad = (String) jTableUsuarios.getValueAt(row, 2);
+            String direccion = (String) jTableUsuarios.getValueAt(row, 3);
+            String telefono = (String) jTableUsuarios.getValueAt(row, 4);
+            String prestamoA = (String) jTableUsuarios.getValueAt(row, 5);
+            jtfIdUsuario.setText("" + id);
+            jtfNombre.setText(nombre);
+            jtfEdad.setText(edad);
+            jtfDireccion.setText(direccion);
+            jtfTelefono.setText(telefono);
+            jtfPrestamoA.setText(prestamoA);
         }
-    }//GEN-LAST:event_jTableLibrosMouseClicked
+    }//GEN-LAST:event_jTableUsuariosMouseClicked
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MenuLibros().setVisible(true);
+                new MenuUsuarios().setVisible(true);
             }
         });
     }
     //LISTAR TABLAS PRINCIPALES
-    void listarLibros() {
-        String sql = "select * from libros";
+    void listarUsuarios() {
+        String sql = "select * from usuarios";
         try {
             cn = con.getConnection();
             st = cn.createStatement();
             rs = st.executeQuery(sql);
             Object[] libros = new Object[6]; 
-            modelo1=(DefaultTableModel) jTableLibros.getModel();
+            modelo1=(DefaultTableModel) jTableUsuarios.getModel();
             while (rs.next()) {
-                libros[0] = rs.getInt("id_libro");
-                libros[1] = rs.getString("titulo");
-                libros[2] = rs.getString("autor");
-                libros[3] = rs.getString("editorial");
-                libros[4] = rs.getString("ano");
-                libros[5] = rs.getString("stock");
+                libros[0] = rs.getInt("id_usuario");
+                libros[1] = rs.getString("nombreUsuario");
+                libros[2] = rs.getString("edad");
+                libros[3] = rs.getString("direccion");
+                libros[4] = rs.getString("telefono");
+                libros[5] = rs.getString("prestamoActivo");
                 modelo1.addRow(libros);
             }
-            jTableLibros.setModel(modelo1);
+          jTableUsuarios.setModel(modelo1);
 
         } catch (Exception e) {
         }
     }
     //Agregar los elementos de los espacios
     void Agregar() {
-        String titulo = jtfTitulo.getText();
-        String autor = jtfAutor.getText();
-        String editorial = jtfEditorial.getText();
-        String ano = jtfAno.getText();
-        String inventario = jtfInventario.getText();
+        String nombre = jtfNombre.getText();
+        String edad = jtfEdad.getText();
+        String direccion = jtfDireccion.getText();
+        String telefono = jtfTelefono.getText();
+        String prestamoA = jtfPrestamoA.getText();
         try {
-            if (titulo.equals("") || autor.equals("") || editorial.equals("") || ano.equals("") || inventario.equals("") ) {
+            if (nombre.equals("") || edad.equals("") || direccion.equals("") || telefono.equals("") || prestamoA.equals("") ) {
                 JOptionPane.showMessageDialog(null, "Debe Ingresar Datos");
                 limpiarTabla(modelo1);               
             } else {
-                String sql = "insert into libros(titulo,autor,editorial,ano,stock) values('" + titulo + "','" + autor + "','" + editorial + "','" + ano + "','" + inventario + "')";
+                String sql = "insert into usuarios(nombreUsuario,edad,direccion,telefono,prestamoActivo) values('" + nombre + "','" + edad + "','" + direccion + "','" + telefono + "','" + prestamoA + "')";
                 cn = con.getConnection();
                 st = cn.createStatement();
                 st.executeUpdate(sql);
-                JOptionPane.showMessageDialog(null, "Libro Registrado con Exito");
+                JOptionPane.showMessageDialog(null, "Usuario Registrado con Exito");
                 limpiarTabla(modelo1);   
             }
         } catch (Exception e) {
@@ -476,18 +471,18 @@ public class MenuLibros extends javax.swing.JFrame {
     
     //FUNCION MODIFICAR CON ELEMENTO SELECCIONADO DE LA TABLA
     void Modificar() {
-        String titulo = jtfTitulo.getText();
-        String autor = jtfAutor.getText();
-        String editorial = jtfEditorial.getText();
-        String ano = jtfAno.getText();
-        String inventario = jtfInventario.getText();
-        String sql = "update libros set titulo='" + titulo + "',autor='" + autor + "',editorial='" + editorial + "' ,ano='" + ano + "' ,stock='" + inventario + "'  where id_libro=" + id;
+        String nombre = jtfNombre.getText();
+        String edad = jtfEdad.getText();
+        String direccion = jtfDireccion.getText();
+        String telefono = jtfTelefono.getText();
+        String prestamoA = jtfPrestamoA.getText();
+        String sql = "update usuarios set nombreUsuario='" + nombre + "',edad='" + edad + "',direccion='" + direccion + "' ,telefono='" + telefono + "' ,prestamoActivo='" + prestamoA + "'  where id_usuario=" + id;
         try {
-            if (titulo != null || autor != null || editorial != null || ano != null || inventario != null) {
+            if (nombre != null || edad != null || direccion != null || telefono != null || prestamoA != null) {
                 cn = con.getConnection();
                 st = cn.createStatement();
                 st.executeUpdate(sql);
-                JOptionPane.showMessageDialog(null, "Libro Modificado");
+                JOptionPane.showMessageDialog(null, "Usuario Modificado");
                 limpiarTabla(modelo1);
                 
             } else {
@@ -500,16 +495,16 @@ public class MenuLibros extends javax.swing.JFrame {
     }
     
     void Eliminar() {
-        String sql = "delete from libros where id_libro=" + id;        
-        int fila = jTableLibros.getSelectedRow();
+        String sql = "delete from usuarios where id_usuario=" + id;        
+        int fila = jTableUsuarios.getSelectedRow();
         if (fila < 0) {
-            JOptionPane.showMessageDialog(null,"Libro no Seleccionado");
+            JOptionPane.showMessageDialog(null,"Usuario no Seleccionado");
         } else {
                 try {
                     cn = con.getConnection();
                     st = cn.createStatement();
                     st.executeUpdate(sql);
-                    JOptionPane.showMessageDialog(null, "Libro Eliminado");
+                    JOptionPane.showMessageDialog(null, "Usuario Eliminado");
                     limpiarTabla(modelo1);
                     
                 } catch (Exception e) {
@@ -521,7 +516,7 @@ public class MenuLibros extends javax.swing.JFrame {
     
     //Limpiar la tabla para volverla a listar
     void limpiarTabla(DefaultTableModel model) {
-        for (int i = 0; i <= jTableLibros.getRowCount(); i++) {
+        for (int i = 0; i <jTableUsuarios.getRowCount(); i++) {
             model.removeRow(i);
             i = i - 1;
         }
@@ -529,63 +524,43 @@ public class MenuLibros extends javax.swing.JFrame {
     }
     
      void nuevo() {
-        jtfIdLibro.setText("");
-        jtfTitulo.setText("");
-        jtfAutor.setText("");
-        jtfEditorial.setText("");
-        jtfAno.setText("");
-        jtfInventario.setText("");
-        jtfTitulo.requestFocus();
+        jtfIdUsuario.setText("");
+        jtfNombre.setText("");
+        jtfEdad.setText("");
+        jtfDireccion.setText("");
+        jtfTelefono.setText("");
+        jtfPrestamoA.setText("");
+        jtfNombre.requestFocus();
     }
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAgregarLibro;
-    private javax.swing.JButton btnAgregarLibros;
-    private javax.swing.JButton btnEliminarLibro;
-    private javax.swing.JButton btnEliminarLibros;
+    private javax.swing.JButton btnAgregarUsuario;
+    private javax.swing.JButton btnEliminarUsuario;
     private javax.swing.JButton btnInsertar;
-    private javax.swing.JButton btnModificarLibro;
-    private javax.swing.JButton btnModificarLibros;
+    private javax.swing.JButton btnModificarUsuario;
     private javax.swing.JButton btnSeccionLibros;
     private javax.swing.JButton btnSeccionPrestamos;
     private javax.swing.JButton btnSeccionUsuarios;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
     private javax.swing.JLabel jLabel49;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel50;
     private javax.swing.JLabel jLabel51;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
-    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTableLibros;
-    private javax.swing.JTextField jtfAno;
-    private javax.swing.JTextField jtfAutor;
-    private javax.swing.JTextField jtfEditorial;
-    private javax.swing.JTextField jtfIdLibro;
-    private javax.swing.JTextField jtfInventario;
-    private javax.swing.JTextField jtfTitulo;
-    private javax.swing.JTextField txtAno;
-    private javax.swing.JTextField txtAutor;
-    private javax.swing.JTextField txtEditorial;
-    private javax.swing.JTextField txtIdlibro;
-    private javax.swing.JTextField txtInventario;
-    private javax.swing.JTextField txtTitulo;
+    private javax.swing.JTable jTableUsuarios;
+    private javax.swing.JTextField jtfDireccion;
+    private javax.swing.JTextField jtfEdad;
+    private javax.swing.JTextField jtfIdUsuario;
+    private javax.swing.JTextField jtfNombre;
+    private javax.swing.JTextField jtfPrestamoA;
+    private javax.swing.JTextField jtfTelefono;
     // End of variables declaration//GEN-END:variables
 }
