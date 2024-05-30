@@ -7,11 +7,11 @@ import javax.swing.JTextField;
 
 public class LoginForm extends javax.swing.JFrame {
 
+    /*Al inicializar la aplicacion se inicializan todos los componentes de la
+    misma, asi tambien se maximiza la ventana para que abarque el mayor espacio*/
     public LoginForm() {
         initComponents();
-        this.setExtendedState(MAXIMIZED_BOTH);
-        
-        
+        this.setExtendedState(MAXIMIZED_BOTH); 
     }
 
     @SuppressWarnings("unchecked")
@@ -170,60 +170,48 @@ public class LoginForm extends javax.swing.JFrame {
         Ingresar();
     }//GEN-LAST:event_btnInsertarActionPerformed
 
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(LoginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(LoginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(LoginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(LoginForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        /* Create and display the form */
-        
+    public static void main(String args[]) { 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new LoginForm().setVisible(true);
             }
         });
     }
-    
+    /*Funcion Utilizada  al pulsar el boton Ingresar para poder realizar las consultas con la base de datos, 
+    en la cual D se recuperan los datos escritos en el formulario respectivos de el nombre y la contraseña
+    del usuario, los cuales ejecutan una sentencia con la cual comprueban con la base de datos
+    si los datos coinciden, si estos coinciden con el nivel Administrador o Empleado, abrira la pestaña
+    principal con la cual podra utilizar el crud de todas las ventanas, a su vez que cerrara
+    automaticamente la ventana de login para dejar unicamente la de MenuLibros*/
     public void Ingresar(){
         String username = txtNombreTra.getText();
         String password = new String(txtPasswordTra.getPassword());
-
         // Realizar la autenticación en la base de datos
         String nivelUsuario = authenticateAndGetUserLevel(username, password);
         
         if (nivelUsuario != null) {
             if (nivelUsuario.equals("administrador")) {
-                // Si es administrador, abrir el formulario A
+                // Si es administrador, abrir el formulario MenuLibros
                 MenuLibros  menulibros = new MenuLibros();
                 menulibros.setVisible(true);
                 dispose();
+                //Si es empleado, abrir el formulario Menu Libros
             } else if (nivelUsuario.equals("empleado")) {
-                // Si es usuario común, abrir el formulario B
-                System.out.println("Abrir empleado");
+                MenuLibros  menulibros = new MenuLibros();
+                menulibros.setVisible(true);
+                dispose();
             }
         } else {
+            //Mandar mensaje de error en caso de que no coincidan los datos
             JOptionPane.showMessageDialog(null, "Nombre de usuario o contraseña incorrectos", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
-    
+
+    /*Funcion utilizada para comprobar el nivel de empleado del usuario, mediante esta
+    funcion realizamos una conexion con la base de datos y ejecutamos una sentencia SQL
+    mediante la cual checamos dentro de la tabla Trabajadores el tipo de trabajador que 
+    quiere entrar en el programa, si todo coincide el usuario podra acceder a el 
+    programa sin mayor complicacion*/
     private String authenticateAndGetUserLevel(String username, String password) {
         try {
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/bibliotec","root","");
@@ -232,19 +220,14 @@ public class LoginForm extends javax.swing.JFrame {
             preparedStatement.setString(1, username);
             preparedStatement.setString(2, password);
             ResultSet resultSet = preparedStatement.executeQuery();
-
             if (resultSet.next()) {
                 return resultSet.getString("tipoTra");
             }
         } catch (SQLException e) {
             e.printStackTrace();
         }
-
         return null;
-    }
-    
-        
-        
+    }   
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnInsertar;
     private javax.swing.JLabel jLabel1;

@@ -7,14 +7,18 @@ import javax.swing.table.DefaultTableModel;
 
 public class MenuLibros extends javax.swing.JFrame {
     
+    
+    /*Seccion donde se inicializan las variables de conexion que se estaran utilizando
+    con frecuencia dentro de las funciones del codigo*/
     Conexion con = new Conexion();
     Connection cn;
     Statement st;
     ResultSet rs;
     DefaultTableModel modelo1;
-    int id;
+    int id;//Variable inicializada para las id de las tablas
     
-    
+    /*Inicializacion de la ventana en donde se coloca en pantalla completa automaticamente
+    e inicializa todos los componentes de la ventana para empezar a utilizarlos*/
     public MenuLibros() {
         initComponents();
         this.setExtendedState(MAXIMIZED_BOTH);
@@ -77,11 +81,6 @@ public class MenuLibros extends javax.swing.JFrame {
         btnSeccionLibros.setForeground(new java.awt.Color(243, 241, 229));
         btnSeccionLibros.setText("Libros");
         btnSeccionLibros.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(243, 241, 229), 2));
-        btnSeccionLibros.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSeccionLibrosActionPerformed(evt);
-            }
-        });
 
         btnSeccionUsuarios.setBackground(new java.awt.Color(18, 188, 85));
         btnSeccionUsuarios.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -369,52 +368,73 @@ public class MenuLibros extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnSeccionLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeccionLibrosActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnSeccionLibrosActionPerformed
-
+    
+    /*Aqui se encuentran las acciones de los botones que se utilizaran a manera de navegacion
+    los cuales tienen una variable de tipo objeto la cual mandamos a llamar para poder
+    interactuar con la ventana, cada boton tiene la funcion de hacer visible la ventana
+    deseada y desactivar en la que se encuentra actualmente, de manera que se pueda mover
+    con libertad entre ventadas*/
+    
+    //Boton para seccion Usuarios
     private void btnSeccionUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeccionUsuariosActionPerformed
         MenuUsuarios  menuUsuarios = new MenuUsuarios();
-        menuUsuarios.setVisible(true);
-        dispose();
+        menuUsuarios.setVisible(true);//Activa la ventana usuario
+        dispose();//Desactiva la ventana en la que se encuentra
     }//GEN-LAST:event_btnSeccionUsuariosActionPerformed
-
+    
+    //Boton para seccion Prestamos
     private void btnSeccionPrestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeccionPrestamosActionPerformed
-        MenuPrestamo  menuPrestamo = new MenuPrestamo();
-        menuPrestamo.setVisible(true);
-        dispose();
+        MenuPrestamo  menuPrestamo = new MenuPrestamo();//Inicializa variable objeto
+        menuPrestamo.setVisible(true);//Activa la ventana usuario
+        dispose();//Desactiva la ventana en la que se encuentra
     }//GEN-LAST:event_btnSeccionPrestamosActionPerformed
 
+    
+    /*Botones de accion. En esta seccion se encuentran los botones con los cuales el usuario
+    interactuara en la aplicacion, cada uno tiene sus respectivas funciones de accion para
+    realizarlas en cuanto el boton sea pulsado*/
+    
+    //Boton Agregar Libro
     private void btnAgregarLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarLibrosActionPerformed
         Agregar();
         listarLibros();
         nuevo();
     }//GEN-LAST:event_btnAgregarLibrosActionPerformed
 
+    //Boton Eliminar Libro
     private void btnEliminarLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarLibrosActionPerformed
         Eliminar();
         listarLibros();
         nuevo();
     }//GEN-LAST:event_btnEliminarLibrosActionPerformed
 
+    //Boton Modificar Libro
     private void btnModificarLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarLibrosActionPerformed
         Modificar();
         listarLibros();
         nuevo();
     }//GEN-LAST:event_btnModificarLibrosActionPerformed
 
+    
+    
     private void jTableLibrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableLibrosMouseClicked
-        int row = jTableLibros.getSelectedRow();
+        
+        /*Funcion Para seleccionar una linea deseada dentro de la tabla libros
+        Mediante esta asignamos los valores que se encuentren dentro de la tabla a los
+        campos de texto dentro de la zona de edicion, esta funcion nos ayuda principalmente
+        para las funciones de MODIFICAR y ELIMINAR*/
+        int row = jTableLibros.getSelectedRow();//Se selecciona la fila dentro de la tabla
         if (row == -1) {
             JOptionPane.showMessageDialog(null, "No se Selecciono");
         } else {
+            //Variables en las que se guardan los elementos seleccionados
             id = Integer.parseInt((String) jTableLibros.getValueAt(row, 0).toString());
             String titulo = (String) jTableLibros.getValueAt(row, 1);
             String autor = (String) jTableLibros.getValueAt(row, 2);
             String editorial = (String) jTableLibros.getValueAt(row, 3);
             String ano = (String) jTableLibros.getValueAt(row, 4);
             String inventario = (String) jTableLibros.getValueAt(row, 5);
+            //Asignamos las variables previamente asignadas
             jtfIdLibro.setText("" + id);
             jtfTitulo.setText(titulo);
             jtfAutor.setText(autor);
@@ -432,16 +452,25 @@ public class MenuLibros extends javax.swing.JFrame {
             }
         });
     }
-    //LISTAR TABLAS PRINCIPALES
+    
+    /*Esta funcion realiza una consulta SQL con la base de datos con la cual
+    recupera los todos los datos que se encuentren dentro de la tabla "libros"
+    mediante una conexion y un objeto de tipo array, se guardan las variables y 
+    se muestran en la tabla mediante la funcion defaultTableModel, y recuperando
+    las variables directo de la base de datos, podemos mostrar todo el contenido
+    en la tabla dentro del formulario*/
     void listarLibros() {
-        String sql = "select * from libros";
+        String sql = "select * from libros";//Consulta SQL
         try {
+            //Conexion con la base de datos
             cn = con.getConnection();
             st = cn.createStatement();
             rs = st.executeQuery(sql);
-            Object[] libros = new Object[6]; 
+            Object[] libros = new Object[6];//Elemento Array para guardar valores
+            //Objeto para utilizar la tabla dentro del formulario y obtener el formato
             modelo1=(DefaultTableModel) jTableLibros.getModel();
             while (rs.next()) {
+                //Variables dentro del array coincidiendo con la base de datos
                 libros[0] = rs.getInt("id_libro");
                 libros[1] = rs.getString("titulo");
                 libros[2] = rs.getString("autor");
@@ -451,95 +480,120 @@ public class MenuLibros extends javax.swing.JFrame {
                 modelo1.addRow(libros);
             }
             jTableLibros.setModel(modelo1);
-
         } catch (Exception e) {
         }
     }
-    //Agregar los elementos de los espacios
+    
+    /*Esta funcion nos permite agregar los datos almacenados a la tabla libros
+    mediante unas variables guardamos el texto que el usuario haya introducido en los
+    campos de texto correspondientes, obteniendo estos datos, podemos conectar con la
+    base de datos y realizar una consulta SQL para poder agregar los datos deseados*/
     void Agregar() {
+        //Variables de los campos de texto
         String titulo = jtfTitulo.getText();
         String autor = jtfAutor.getText();
         String editorial = jtfEditorial.getText();
         String ano = jtfAno.getText();
         String inventario = jtfInventario.getText();
         try {
+            //Condicional para mandar un mensaje de error en caso de que no se introduzca ningun dato y se púlse el boton
             if (titulo.equals("") || autor.equals("") || editorial.equals("") || ano.equals("") || inventario.equals("") ) {
                 JOptionPane.showMessageDialog(null, "Debe Ingresar Datos");
-                limpiarTabla(modelo1);               
+                limpiarTabla(modelo1);  
+                //Si no estan vacios se ejecuta la sentencia sql con ayuda de las variables que guardamos anteriormente
             } else {
                 String sql = "insert into libros(titulo,autor,editorial,ano,stock) "
-                        + "values('" + titulo + "','" + autor + "','" + editorial + "','" + ano + "','" + inventario + "')";
+                            + "values('" + titulo + "','" + autor + "','" + editorial + "','" + ano + "','" + inventario + "')";
+                //Conectamos y realizamos la consulta
                 cn = con.getConnection();
                 st = cn.createStatement();
                 st.executeUpdate(sql);
                 JOptionPane.showMessageDialog(null, "Libro Registrado con Exito");
-                limpiarTabla(modelo1);   
+                limpiarTabla(modelo1);//Funcion para limpiar la tabla y mostrar posteriormente datos renovados 
             }
         } catch (Exception e) {
         }
     }
     
-    //FUNCION MODIFICAR CON ELEMENTO SELECCIONADO DE LA TABLA
+    /*FUNCION MODIFICAR CON ELEMENTO SELECCIONADO DE LA TABLA. Con la ayuda de la funcion que se mostro en la
+    accion jTableMouseClicked, la cual selecciona los elementos seleccionados en la tabla, podemos ser capaces
+    de llenar los campos de la zona de edicion, de manera que quedan de manera facil para su modificacion
+    mediante una sentencia SQL mandamos las variables nuevamente para que estas se actualicen con la base de datos
+    */
     void Modificar() {
+        //Variables en las cuales guardamos los valores introducidos por el usuario
         String titulo = jtfTitulo.getText();
         String autor = jtfAutor.getText();
         String editorial = jtfEditorial.getText();
         String ano = jtfAno.getText();
         String inventario = jtfInventario.getText();
-        String sql = "update libros set titulo='" + titulo + "',autor='" + autor + "',editorial='" + editorial + "' ,ano='" + ano + "' ,stock='" + inventario + "'  where id_libro=" + id;
+        //Sentencia SQL para actualizar la tabla dentro de la base de datos
+        String sql = "update libros set titulo='" + titulo + "',autor='" + autor + "',editorial='" + editorial + "' "
+                + ",ano='" + ano + "' ,stock='" + inventario + "'  where id_libro=" + id;
         try {
             if (titulo != null || autor != null || editorial != null || ano != null || inventario != null) {
+                //Conectamos y realizamos la consulta
                 cn = con.getConnection();
                 st = cn.createStatement();
                 st.executeUpdate(sql);
                 JOptionPane.showMessageDialog(null, "Libro Modificado");
-                limpiarTabla(modelo1);
-                
+                limpiarTabla(modelo1);//Funcion para limpiar la tabla y mostrar posteriormente datos renovados
             } else {
                 JOptionPane.showMessageDialog(null, "Error...!!!");
             }
-
         } catch (Exception e) {
         }
-
     }
     
+    
+    /*Funcion para eliminar una linea seleccionada con ayuda de la funcion tableMouseClicked 
+    Esta funcion basicamente realiza una consulta sql con la cual mediante la variable id, 
+    borra todo dato que se relacione con dicha id, en este caso los datos del libro que
+    deseemos eliminar*/
     void Eliminar() {
-        String sql = "delete from libros where id_libro=" + id;        
+        //Consulta SQL para eliminar los datos mediante id
+        String sql = "delete from libros where id_libro=" + id;  
+        //Variable para guardar el indice de linea seleccionada
         int fila = jTableLibros.getSelectedRow();
         if (fila < 0) {
             JOptionPane.showMessageDialog(null,"Libro no Seleccionado");
         } else {
                 try {
+                    //Variables de conexion con la base de datos
                     cn = con.getConnection();
                     st = cn.createStatement();
                     st.executeUpdate(sql);
                     JOptionPane.showMessageDialog(null, "Libro Eliminado");
-                    limpiarTabla(modelo1);
-                    
+                    limpiarTabla(modelo1);  //Funcion para limpiar la tabla 
+                                            //y mostrar posteriormente datos renovados                   
                 } catch (Exception e) {
-                }
-               
+                }               
         }
-
     }
     
-    //Limpiar la tabla para volverla a listar
+    /*Funcion que se utiliza dentro de las demas funciones a manera de ayuda
+    para poder limpiar la tabla mas comodamente, de manera que se pueda
+    listar correctamente mas adelante en las funciones*/
     void limpiarTabla(DefaultTableModel model) {
         for (int i = 0; i <= jTableLibros.getRowCount(); i++) {
             model.removeRow(i);
             i = i - 1;
         }
-
     }
     
+    /*Funcion Utilizada para poder resetear los campos de texto dentro
+    de la seccion edicion de elemento, este es util para poder agregar
+    elementos con mas comodidad sin necesidad de borrar los elementos de
+    manera manual*/
      void nuevo() {
+        //Asignamos un valor vacio a los campos de texto
         jtfIdLibro.setText("");
         jtfTitulo.setText("");
         jtfAutor.setText("");
         jtfEditorial.setText("");
         jtfAno.setText("");
         jtfInventario.setText("");
+        //Colocamos el cursor en el titulo para seguir escribiendo con comodidad
         jtfTitulo.requestFocus();
     }
     
