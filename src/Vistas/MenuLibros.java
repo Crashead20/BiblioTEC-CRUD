@@ -380,16 +380,19 @@ public class MenuLibros extends javax.swing.JFrame {
     private void btnAgregarLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregarLibrosActionPerformed
         Agregar();
         listarLibros();
+        nuevo();
     }//GEN-LAST:event_btnAgregarLibrosActionPerformed
 
     private void btnEliminarLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarLibrosActionPerformed
         Eliminar();
         listarLibros();
+        nuevo();
     }//GEN-LAST:event_btnEliminarLibrosActionPerformed
 
     private void btnModificarLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarLibrosActionPerformed
         Modificar();
         listarLibros();
+        nuevo();
     }//GEN-LAST:event_btnModificarLibrosActionPerformed
 
     private void jTableLibrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableLibrosMouseClicked
@@ -518,6 +521,16 @@ public class MenuLibros extends javax.swing.JFrame {
             i = i - 1;
         }
 
+    }
+    
+     void nuevo() {
+        jtfIdLibro.setText("");
+        jtfTitulo.setText("");
+        jtfAutor.setText("");
+        jtfEditorial.setText("");
+        jtfAno.setText("");
+        jtfInventario.setText("");
+        jtfTitulo.requestFocus();
     }
     
 
