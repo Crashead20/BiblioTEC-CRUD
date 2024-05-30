@@ -166,7 +166,7 @@ public class MenuLibros extends javax.swing.JFrame {
                     .addComponent(btnSeccionLibros, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSeccionUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSeccionPrestamos, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(0, 0, 0)
                 .addComponent(jDesktopPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -202,7 +202,7 @@ public class MenuLibros extends javax.swing.JFrame {
         btnEliminarLibros.setBackground(new java.awt.Color(18, 188, 85));
         btnEliminarLibros.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         btnEliminarLibros.setForeground(new java.awt.Color(243, 241, 229));
-        btnEliminarLibros.setText("Modificar");
+        btnEliminarLibros.setText("Eliminar");
         btnEliminarLibros.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(243, 241, 229), 2));
         btnEliminarLibros.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -383,7 +383,8 @@ public class MenuLibros extends javax.swing.JFrame {
     }//GEN-LAST:event_btnAgregarLibrosActionPerformed
 
     private void btnEliminarLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarLibrosActionPerformed
-        // TODO add your handling code here:
+        Eliminar();
+        listarLibros();
     }//GEN-LAST:event_btnEliminarLibrosActionPerformed
 
     private void btnModificarLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarLibrosActionPerformed
@@ -490,7 +491,25 @@ public class MenuLibros extends javax.swing.JFrame {
 
     }
     
-    
+    void Eliminar() {
+        String sql = "delete from libros where id_libro=" + id;        
+        int fila = jTableLibros.getSelectedRow();
+        if (fila < 0) {
+            JOptionPane.showMessageDialog(null,"Usuario no Seleccionado");
+        } else {
+                try {
+                    cn = con.getConnection();
+                    st = cn.createStatement();
+                    st.executeUpdate(sql);
+                    JOptionPane.showMessageDialog(null, "Usuario Eliminado");
+                    limpiarTabla(modelo1);
+                    
+                } catch (Exception e) {
+                }
+               
+        }
+
+    }
     
     //Limpiar la tabla para volverla a listar
     void limpiarTabla(DefaultTableModel model) {
