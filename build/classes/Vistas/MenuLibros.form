@@ -332,43 +332,50 @@
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="1" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="jLabel45" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="155" max="-2" attributes="0"/>
-                  </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="46" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <Component id="btnAgregarLibros" min="-2" pref="100" max="-2" attributes="0"/>
-                              <EmptySpace pref="55" max="32767" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
                               <Component id="btnModificarLibros" min="-2" pref="100" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="44" max="-2" attributes="0"/>
                               <Component id="btnEliminarLibros" min="-2" pref="100" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
                           </Group>
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                                  <Component id="jLabel50" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jLabel46" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jLabel47" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jLabel48" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jLabel49" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="jLabel51" alignment="0" pref="80" max="32767" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Group type="103" groupAlignment="1" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Component id="jLabel50" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jLabel47" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jLabel48" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jLabel49" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jLabel51" alignment="0" pref="80" max="32767" attributes="0"/>
+                                      </Group>
+                                      <EmptySpace max="32767" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="jtfTitulo" alignment="1" min="-2" pref="271" max="-2" attributes="0"/>
+                                          <Component id="jtfAutor" alignment="1" min="-2" pref="271" max="-2" attributes="0"/>
+                                          <Component id="jtfEditorial" alignment="1" min="-2" pref="271" max="-2" attributes="0"/>
+                                          <Component id="jtfAno" alignment="1" min="-2" pref="271" max="-2" attributes="0"/>
+                                          <Component id="jtfInventario" alignment="1" min="-2" pref="271" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" attributes="0">
+                                      <Component id="jLabel46" min="-2" pref="116" max="-2" attributes="0"/>
+                                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                                      <Component id="jtfIdLibro" min="-2" pref="271" max="-2" attributes="0"/>
+                                  </Group>
                               </Group>
-                              <EmptySpace type="separate" max="32767" attributes="0"/>
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="jtfIdLibro" pref="271" max="32767" attributes="0"/>
-                                  <Component id="jtfTitulo" max="32767" attributes="0"/>
-                                  <Component id="jtfAutor" max="32767" attributes="0"/>
-                                  <Component id="jtfEditorial" max="32767" attributes="0"/>
-                                  <Component id="jtfAno" max="32767" attributes="0"/>
-                                  <Component id="jtfInventario" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="73" max="-2" attributes="0"/>
+                              <EmptySpace pref="39" max="32767" attributes="0"/>
                           </Group>
                       </Group>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="jLabel45" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="155" max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>

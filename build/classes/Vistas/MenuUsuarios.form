@@ -352,11 +352,11 @@
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                                           <Component id="jLabel50" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="jLabel46" alignment="0" max="32767" attributes="0"/>
                                           <Component id="jLabel47" alignment="0" max="32767" attributes="0"/>
                                           <Component id="jLabel48" alignment="0" max="32767" attributes="0"/>
                                           <Component id="jLabel49" alignment="0" max="32767" attributes="0"/>
                                           <Component id="jLabel51" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="jLabel46" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="separate" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">

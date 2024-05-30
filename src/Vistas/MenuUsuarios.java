@@ -268,11 +268,11 @@ public class MenuUsuarios extends javax.swing.JFrame {
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                     .addComponent(jLabel50, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel46, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel47, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel48, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel49, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel51, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(jLabel51, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel46, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(18, 18, Short.MAX_VALUE)
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jtfIdUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 271, Short.MAX_VALUE)
@@ -373,7 +373,7 @@ public class MenuUsuarios extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSeccionUsuariosActionPerformed
 
     private void btnSeccionPrestamosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSeccionPrestamosActionPerformed
-        MenuPrestamos  menuPrestamos = new MenuPrestamos();
+        MenuPrestamo  menuPrestamos = new MenuPrestamo();
         menuPrestamos.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnSeccionPrestamosActionPerformed
@@ -430,16 +430,16 @@ public class MenuUsuarios extends javax.swing.JFrame {
             cn = con.getConnection();
             st = cn.createStatement();
             rs = st.executeQuery(sql);
-            Object[] libros = new Object[6]; 
+            Object[] usuarios = new Object[6]; 
             modelo1=(DefaultTableModel) jTableUsuarios.getModel();
             while (rs.next()) {
-                libros[0] = rs.getInt("id_usuario");
-                libros[1] = rs.getString("nombreUsuario");
-                libros[2] = rs.getString("edad");
-                libros[3] = rs.getString("direccion");
-                libros[4] = rs.getString("telefono");
-                libros[5] = rs.getString("prestamoActivo");
-                modelo1.addRow(libros);
+                usuarios[0] = rs.getInt("id_usuario");
+                usuarios[1] = rs.getString("nombreUsuario");
+                usuarios[2] = rs.getString("edad");
+                usuarios[3] = rs.getString("direccion");
+                usuarios[4] = rs.getString("telefono");
+                usuarios[5] = rs.getString("prestamoActivo");
+                modelo1.addRow(usuarios);
             }
           jTableUsuarios.setModel(modelo1);
 
@@ -458,7 +458,8 @@ public class MenuUsuarios extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null, "Debe Ingresar Datos");
                 limpiarTabla(modelo1);               
             } else {
-                String sql = "insert into usuarios(nombreUsuario,edad,direccion,telefono,prestamoActivo) values('" + nombre + "','" + edad + "','" + direccion + "','" + telefono + "','" + prestamoA + "')";
+                String sql = "insert into usuarios(nombreUsuario,edad,direccion,telefono,prestamoActivo) "
+                        + "values('" + nombre + "','" + edad + "','" + direccion + "','" + telefono + "','" + prestamoA + "')";
                 cn = con.getConnection();
                 st = cn.createStatement();
                 st.executeUpdate(sql);
