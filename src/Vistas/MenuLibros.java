@@ -115,6 +115,11 @@ public class MenuLibros extends javax.swing.JFrame {
                 "IdLibro", "Titulo", "Autor", "Editorial", "Año", "Inventario"
             }
         ));
+        jTableLibros.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableLibrosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTableLibros);
         if (jTableLibros.getColumnModel().getColumnCount() > 0) {
             jTableLibros.getColumnModel().getColumn(0).setMinWidth(80);
@@ -385,6 +390,27 @@ public class MenuLibros extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnModificarLibrosActionPerformed
 
+    private void jTableLibrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableLibrosMouseClicked
+        int row = jTableLibros.getSelectedRow();
+        if (row == -1) {
+            JOptionPane.showMessageDialog(null, "No se Selecciono");
+        } else {
+            id = Integer.parseInt((String) jTableLibros.getValueAt(row, 0).toString());
+            String titulo = (String) jTableLibros.getValueAt(row, 1);
+            String autor = (String) jTableLibros.getValueAt(row, 2);
+            String editorial = (String) jTableLibros.getValueAt(row, 3);
+            String ano = (String) jTableLibros.getValueAt(row, 4);
+            String inventario = (String) jTableLibros.getValueAt(row, 5);
+            jtfIdLibro.setText("" + id);
+            jtfTitulo.setText(titulo);
+            jtfAutor.setText(autor);
+            jtfEditorial.setText(editorial);
+            jtfAno.setText(ano);
+            jtfInventario.setText(inventario);
+
+        }
+    }//GEN-LAST:event_jTableLibrosMouseClicked
+
     public static void main(String args[]) {
 
         
@@ -439,7 +465,6 @@ public class MenuLibros extends javax.swing.JFrame {
                 limpiarTabla(modelo1);   
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "Error al añadir libro, intente de nuevo");
         }
     }
     
