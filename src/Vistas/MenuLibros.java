@@ -387,7 +387,8 @@ public class MenuLibros extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEliminarLibrosActionPerformed
 
     private void btnModificarLibrosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarLibrosActionPerformed
-        // TODO add your handling code here:
+        Modificar();
+        listarLibros();
     }//GEN-LAST:event_btnModificarLibrosActionPerformed
 
     private void jTableLibrosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableLibrosMouseClicked
@@ -412,9 +413,6 @@ public class MenuLibros extends javax.swing.JFrame {
     }//GEN-LAST:event_jTableLibrosMouseClicked
 
     public static void main(String args[]) {
-
-        
-        
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MenuLibros().setVisible(true);
@@ -444,9 +442,8 @@ public class MenuLibros extends javax.swing.JFrame {
         } catch (Exception e) {
         }
     }
-    
+    //Agregar los elementos de los espacios
     void Agregar() {
-        String idLibro = jtfIdLibro.getText();
         String titulo = jtfTitulo.getText();
         String autor = jtfAutor.getText();
         String editorial = jtfEditorial.getText();
@@ -468,6 +465,34 @@ public class MenuLibros extends javax.swing.JFrame {
         }
     }
     
+    //FUNCION MODIFICAR CON ELEMENTO SELECCIONADO DE LA TABLA
+    void Modificar() {
+        String titulo = jtfTitulo.getText();
+        String autor = jtfAutor.getText();
+        String editorial = jtfEditorial.getText();
+        String ano = jtfAno.getText();
+        String inventario = jtfInventario.getText();
+        String sql = "update libros set titulo='" + titulo + "',autor='" + autor + "',editorial='" + editorial + "' ,ano='" + ano + "' ,stock='" + inventario + "'  where id_libro=" + id;
+        try {
+            if (titulo != null || autor != null || editorial != null || ano != null || inventario != null) {
+                cn = con.getConnection();
+                st = cn.createStatement();
+                st.executeUpdate(sql);
+                JOptionPane.showMessageDialog(null, "Usuario Modificado");
+                limpiarTabla(modelo1);
+                
+            } else {
+                JOptionPane.showMessageDialog(null, "Error...!!!");
+            }
+
+        } catch (Exception e) {
+        }
+
+    }
+    
+    
+    
+    //Limpiar la tabla para volverla a listar
     void limpiarTabla(DefaultTableModel model) {
         for (int i = 0; i <= jTableLibros.getRowCount(); i++) {
             model.removeRow(i);
